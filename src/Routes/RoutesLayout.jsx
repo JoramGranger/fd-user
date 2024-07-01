@@ -10,6 +10,7 @@ import MobileNav from "../Components/Shared/MobileNav/MobileNav";
 import ToastAlert from "../Components/Shared/PopUps/ToastAlert";
 import useCurrentSkipLinkId from "../Hooks/App/useCurrentSkipLinkId";
 import useOnlineStatus from "../Hooks/Helper/useOnlineStatus";
+import Announcement from "../Components/Header/Announcement/Announcement";
 
 const RoutesLayout = () => {
   const skipLinkSectionId = useCurrentSkipLinkId();
@@ -18,8 +19,9 @@ const RoutesLayout = () => {
   return (
     <div className="App" tabIndex="-1">
       <SkipContentLink scrollTo={skipLinkSectionId} />
-      <FirstHeader />
+      {/* <FirstHeader /> */}
       <Header />
+      <Announcement />
       <MobileNav />
       <GlobalOverlay />
       <ScrollToTop />

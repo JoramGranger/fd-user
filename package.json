@@ -31,6 +31,7 @@
     "react-uuid": "^2.0.0",
     "router-dom": "^2.2.11",
     "sass": "^1.77.4",
+    "styled-components": "^6.1.11",
     "swiper": "^11.1.4",
     "uuid": "^9.0.1",
     "web-vitals": "^4.0.1"
