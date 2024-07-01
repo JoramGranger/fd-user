@@ -12,7 +12,8 @@ const CategoriesSection = () => {
       <div className={s.wrapper}>
         <SectionTitle
           eventName={t(`${categoriesSection}.title`)}
-          sectionName={t(`${categoriesSection}.browseByCategory`)}
+          sectionName={'Shop By Category'}
+/*           sectionName={t(`${categoriesSection}.browseByCategory`)} */
         />
       </div>
 

@@ -18,11 +18,11 @@ const CategoryCard = ({ categoryData }) => {
   return (
     <Link
       className={s.card}
-      title={categoryTitleTrans}
-      onClick={navigateToCategory}
+      /* title={categoryTitleTrans} */
+      /* onClick={navigateToCategory} */
     >
       <SvgIcon name={iconName} />
-      <span>{categoryTitleTrans}</span>
+      <span>{title}</span>
     </Link>
   );
 };

@@ -1,4 +1,5 @@
 @import "src/Styles/mixins";
+@import "src/Styles/colors";
 
 .sliderButtons {
   display: flex;
@@ -11,7 +12,7 @@
 .sliderButtons>button {
   width: 46px;
   height: 46px;
-  background-color: var(--very-light-gray2);
+  background-color: pink;
   @include center-x-y;
   border-radius: 50%;
   border: none;

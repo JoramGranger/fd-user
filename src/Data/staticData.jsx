@@ -52,53 +52,48 @@ export const introductionSliderData = [
 
 export const categoriesData = [
   {
-    iconName: "mobile",
-    title: "Phones",
-    id: uuid(),
-  },
-  {
-    iconName: "computer",
-    title: "Computers",
-    id: uuid(),
-  },
-  {
-    iconName: "smartWatch",
-    title: "SmartWatch",
-    id: uuid(),
-  },
-  {
-    iconName: "camera",
-    title: "Camera",
-    id: uuid(),
-  },
-  {
-    iconName: "headphone",
-    title: "HeadPhones",
-    id: uuid(),
-  },
-  {
-    iconName: "gamepad",
-    title: "Gaming",
-    id: uuid(),
-  },
-  {
-    iconName: "furniture",
-    title: "Furniture",
-    id: uuid(),
-  },
-  {
-    iconName: "shirt",
-    title: "Clothes",
-    id: uuid(),
-  },
-  {
-    iconName: "dogHand",
-    title: "Animal",
+    iconName: "makeup",
+    title: "OilyS kin",
     id: uuid(),
   },
   {
     iconName: "makeup",
-    title: "makeup",
+    title: "Dry Skin",
+    id: uuid(),
+  },
+  {
+    iconName: "makeup",
+    title: "Sensitive Skin",
+    id: uuid(),
+  },
+  {
+    iconName: "makeup",
+    title: "Combination Skin",
+    id: uuid(),
+  },
+  {
+    iconName: "makeup",
+    title: "Acne",
+    id: uuid(),
+  },
+  {
+    iconName: "makeup",
+    title: "Hyperpigmentation",
+    id: uuid(),
+  },
+  {
+    iconName: "makeup",
+    title: "Even Skin Tone",
+    id: uuid(),
+  },
+  {
+    iconName: "makeup",
+    title: "OPen Pores",
+    id: uuid(),
+  },
+  {
+    iconName: "makeup",
+    title: "Stretch Marks",
     id: uuid(),
   },
 ];
@@ -462,4 +457,73 @@ export const billingInputsData = [
     autoComplete: true,
     id: uuid(),
   },
+];
+
+export const ProductCategories = [
+  // skin type
+  {
+      category: 'Skin Type',
+      subCategories: [
+          {   
+              id: 1,
+               childCategory: 'Oily Skin',
+                link: 'oily-skin',
+                img:'https://delightsupplies.net/wp-content/uploads/2022/05/Aveeno-Daily-Moisturixing-Lotion-Grey-Cover-500x500.jpg'
+          },
+          {
+              id: 2,
+              childCategory: 'Dry Skin',
+              link: 'dry-skin',
+              img:'https://delightsupplies.net/wp-content/uploads/2022/05/Aveeno-Daily-Moisturixing-Lotion-Grey-Cover-500x500.jpg'
+          },
+          {
+              id: 3,
+              childCategory: 'Sensitive Skin',
+              link: 'sensitive-skin',
+              img:'https://delightsupplies.net/wp-content/uploads/2022/05/Aveeno-Daily-Moisturixing-Lotion-Grey-Cover-500x500.jpg'
+          },
+          {
+              id: 4,
+              childCategory: 'Combination Skin',
+              link: 'combination-skin',
+              img:'https://delightsupplies.net/wp-content/uploads/2022/05/Aveeno-Daily-Moisturixing-Lotion-Grey-Cover-500x500.jpg'
+          },
+      ],
+      // skin concern
+  },
+  {
+      category: 'Skin Concern',
+      subCategories: [
+          {
+              id: 5,
+              childCategory: 'Acne',
+              link: 'acne',
+              img:'https://delightsupplies.net/wp-content/uploads/2022/05/Aveeno-Daily-Moisturixing-Lotion-Grey-Cover-500x500.jpg'
+          },
+          {
+              id: 6,
+              childCategory: 'Hyperpigmentation',
+              link: 'hyperpigmentation',
+              img:'https://delightsupplies.net/wp-content/uploads/2022/05/Aveeno-Daily-Moisturixing-Lotion-Grey-Cover-500x500.jpg'
+          },
+          {
+              id: 7,
+              childCategory: 'Even Skin Tone',
+              link: 'even-skin-tone',
+              img:'https://delightsupplies.net/wp-content/uploads/2022/05/Aveeno-Daily-Moisturixing-Lotion-Grey-Cover-500x500.jpg'
+          },
+          {
+              id: 8,
+              childCategory: 'Open Pores',
+              link: 'open-pores',
+              img:'https://delightsupplies.net/wp-content/uploads/2022/05/Aveeno-Daily-Moisturixing-Lotion-Grey-Cover-500x500.jpg'
+          },
+          {
+              id: 9,
+              childCategory: 'Stretch Marks',
+              link: 'stretch-marks',
+              img:'https://delightsupplies.net/wp-content/uploads/2022/05/Aveeno-Daily-Moisturixing-Lotion-Grey-Cover-500x500.jpg'
+          }
+      ]
+  }
 ];

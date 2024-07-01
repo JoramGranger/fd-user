@@ -1,8 +1,9 @@
 @import "src/Styles/mixins";
+@import "src/Styles/colors";
 
 .card {
   border-radius: 4px;
-  border: solid 1px #0000004D;
+  border: solid 1px var(--black-one);
   outline: 2px solid transparent;
   outline-offset: -2px;
   display: flex;
@@ -10,9 +11,11 @@
   align-items: center;
   padding: 20px;
   transition: background-color .2s;
+  -webkit-box-shadow: 5px 5px 15px -11px #000000; 
+  box-shadow: 5px 5px 10px -11px #000000;
 
   &:not(:focus-visible):hover {
-    background-color: var(--tomato);
+    background-color: var(--black-one);
     border-color: var(--tomato);
   }
 
