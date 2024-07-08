@@ -19,12 +19,12 @@ const ProductCardInfo = ({ product, showColors, navigateToProductDetails }) => {
     <section className={s.productInfo}>
       <strong className={s.productName}>
         <a href="#" onClick={() => navigateToProductDetails()}>
-          {translatedProductName}
+          {shortName}
         </a>
       </strong>
 
       <div className={s.price}>
-        ${afterDiscount}
+        UGX {afterDiscount}
         {discount > 0 && <del className={s.afterDiscount}>${price}</del>}
       </div>
 

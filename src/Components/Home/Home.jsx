@@ -34,8 +34,7 @@ const Home = () => {
             <MainSlider />
           </div>
           <CategoriesSection />
-          <TodaySection />
-          
+          <TodaySection />          
           <ThisMonthSection />
           <ProductPoster />
           <OurProductsSection />
