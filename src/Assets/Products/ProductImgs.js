@@ -62,9 +62,29 @@ import soccerCleatsThum1 from "./zoom-soccer-cleats/zoom-soccer-cleats-thum1.web
 import soccerCleatsThum2 from "./zoom-soccer-cleats/zoom-soccer-cleats-thum2.webp";
 import soccerCleatsThum3 from "./zoom-soccer-cleats/zoom-soccer-cleats-thum3.webp";
 import soccerCleats from "./zoom-soccer-cleats/zoom-soccer-cleats.webp";
-// import  from "."
+// import  from "." 
+
+import p001 from "./p001.jpg";
+import p002 from "./p002.jpg";
+import p003 from "./p003.jpg";
+import p004 from "./p004.webp";
+import p005 from "./p005.webp";
+import p006 from "./p006.webp";
+import p007 from "./p007.webp";
+import p008 from "./p008.webp";
+import p009 from "./p009.webp";
+
 
 export {
+  p001,
+  p002,
+  p003,
+  p004,
+  p005,
+  p006,
+  p007,
+  p008,
+  p009,
   bookshelf,
   bookshelfThum1,
   bookshelfThum2,

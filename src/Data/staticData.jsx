@@ -53,7 +53,7 @@ export const introductionSliderData = [
 export const categoriesData = [
   {
     iconName: "makeup",
-    title: "OilyS kin",
+    title: "Oily Skin",
     id: uuid(),
   },
   {
@@ -88,7 +88,7 @@ export const categoriesData = [
   },
   {
     iconName: "makeup",
-    title: "OPen Pores",
+    title: "Open Pores",
     id: uuid(),
   },
   {

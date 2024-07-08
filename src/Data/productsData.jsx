@@ -63,27 +63,35 @@ import {
   wiredKeyboardThum1,
   wiredKeyboardThum2,
   wiredKeyboardThum3,
+  p001,
+  p002,
+  p003,
+  p004,
+  p005,
+  p006,
+  p007,
+  p008,
+  p009,
 } from "src/Assets/Products/ProductImgs";
 import { setAfterDiscountKey, setFormattedPrice } from "src/Functions/helper";
 import { v4 as uuid } from "uuid";
 
 export const productsData = [
   {
-    shortName: "PS5 Gamepad",
-    name: "PS5 Gamepad",
-    category: "gaming",
-    price: 69.99,
-    discount: 40,
+    shortName: "product 1",
+    name: "Product 1",
+    category: "Oily Skin",
+    price: 45000,
+    discount: 0,
     description: `
-    PlayStation 5 Controller Skin High quality vinyl with air channel adhesive
-    for easy bubble free install & mess free removal Pressure sensitive.`,
+    Treats dark spots and pigmentation, fights hyperpigmentation, improves skin discoloration`,
     addedDate: "2024/2/2",
-    img: ps5Gamepad,
+    img: p001,
     otherImages: [
-      ps5Gamepad,
-      ps5GamepadThum1,
-      ps5GamepadThum2,
-      ps5GamepadThum3,
+      p001,
+      p001,
+      p001,
+      p001,
     ],
     colors: [
       {
