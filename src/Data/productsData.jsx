@@ -407,7 +407,204 @@ export const productsData = [
     sold: 105,
     id: uuid(),
   },
-
+  {
+    shortName: "product 11",
+    name: "Product 11",
+    category: "Sensitive Skin",
+    price: 15000,
+    discount: 0,
+    description: `
+    Treats dark spots and pigmentation, fights hyperpigmentation, improves skin discoloration`,
+    addedDate: "2024/2/2",
+    img: p001,
+    otherImages: [
+      p001,
+      p001,
+      p001,
+      p001,
+    ],
+    colors: [
+      {
+        name: "ice blue",
+        color: "#dcdfea",
+      },
+      {
+        name: "black",
+        color: "#27292d",
+      },
+    ],
+    sizes: ["S", "M", "L"],
+    rate: 5,
+    votes: 88,
+    quantity: 1,
+    sold: 105,
+    id: uuid(),
+  },
+  {
+    shortName: "product 1",
+    name: "Product 1",
+    category: "Oily Skin",
+    price: 45000,
+    discount: 0,
+    description: `
+    Treats dark spots and pigmentation, fights hyperpigmentation, improves skin discoloration`,
+    addedDate: "2024/2/2",
+    img: p001,
+    otherImages: [
+      p001,
+      p001,
+      p001,
+      p001,
+    ],
+    colors: [
+      {
+        name: "ice blue",
+        color: "#dcdfea",
+      },
+      {
+        name: "black",
+        color: "#27292d",
+      },
+    ],
+    sizes: ["S", "M", "L"],
+    rate: 5,
+    votes: 88,
+    quantity: 1,
+    sold: 105,
+    id: uuid(),
+  },
+  {
+    shortName: "product 2",
+    name: "Product 2",
+    category: "Dry Skin",
+    price: 55000,
+    discount: 0,
+    description: `
+    Treats dark spots and pigmentation, fights hyperpigmentation, improves skin discoloration`,
+    addedDate: "2024/2/2",
+    img: p002,
+    otherImages: [
+      p002,
+      p002,
+      p002,
+      p002,
+    ],
+    colors: [
+      {
+        name: "ice blue",
+        color: "#dcdfea",
+      },
+      {
+        name: "black",
+        color: "#27292d",
+      },
+    ],
+    sizes: ["S", "M", "L", "XL"],
+    rate: 5,
+    votes: 88,
+    quantity: 1,
+    sold: 105,
+    id: uuid(),
+  },
+  {
+    shortName: "product 3",
+    name: "Product 3",
+    category: "Sensitive Skin",
+    price: 34000,
+    discount: 0,
+    description: `
+    Treats dark spots and pigmentation, fights hyperpigmentation, improves skin discoloration`,
+    addedDate: "2024/2/2",
+    img: p003,
+    otherImages: [
+      p003,
+      p003,
+      p003,
+      p003,
+    ],
+    colors: [
+      {
+        name: "ice blue",
+        color: "#dcdfea",
+      },
+      {
+        name: "black",
+        color: "#27292d",
+      },
+    ],
+    sizes: ["S", "M", "L"],
+    rate: 5,
+    votes: 88,
+    quantity: 1,
+    sold: 105,
+    id: uuid(),
+  },
+  {
+    shortName: "product 4",
+    name: "Product 4",
+    category: "Sensitive Skin",
+    price: 72000,
+    discount: 0,
+    description: `
+    Treats dark spots and pigmentation, fights hyperpigmentation, improves skin discoloration`,
+    addedDate: "2024/2/2",
+    img: p004,
+    otherImages: [
+      p004,
+      p004,
+      p004,
+      p004,
+    ],
+    colors: [
+      {
+        name: "ice blue",
+        color: "#dcdfea",
+      },
+      {
+        name: "black",
+        color: "#27292d",
+      },
+    ],
+    sizes: ["S", "M", "L"],
+    rate: 5,
+    votes: 88,
+    quantity: 1,
+    sold: 105,
+    id: uuid(),
+  },
+  {
+    shortName: "product 5",
+    name: "Product 5",
+    category: "Acne",
+    price: 63000,
+    discount: 0,
+    description: `
+    Treats dark spots and pigmentation, fights hyperpigmentation, improves skin discoloration`,
+    addedDate: "2024/2/2",
+    img: p005,
+    otherImages: [
+      p005,
+      p005,
+      p005,
+      p005,
+    ],
+    colors: [
+      {
+        name: "ice blue",
+        color: "#dcdfea",
+      },
+      {
+        name: "black",
+        color: "#27292d",
+      },
+    ],
+    sizes: ["S", "M", "L"],
+    rate: 5,
+    votes: 88,
+    quantity: 1,
+    sold: 105,
+    id: uuid(),
+  },
 ];
 
 productsData.forEach((product) => {
