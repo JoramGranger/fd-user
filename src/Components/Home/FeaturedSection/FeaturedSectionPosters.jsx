@@ -5,6 +5,7 @@ import {
   speakers,
   womanWithHat,
 } from "src/Assets/Images/Images";
+import { p008, p001, p002, p003, p004, p005, p006, p007 } from "src/Assets/Products/ProductImgs";
 import HorizontalPoster from "../../Shared/Posters/HorizontalPoster";
 import MediumPoster from "../../Shared/Posters/MediumPoster";
 import SmallPoster from "../../Shared/Posters/SmallPoster";
@@ -24,29 +25,29 @@ const FeaturedSectionPosters = () => {
   return (
     <div className={s.posters}>
       <MediumPoster
-        title={medPosterTitleTrans}
-        description={medPosterDescTrans}
-        posterUrl={ps5}
+        title={'Acne Products'}
+        description={'description'}
+        posterUrl={p001}
       />
 
       <div className={s.smallPosters}>
         <HorizontalPoster
-          title={horizontalPosterTitleTrans}
-          description={horizontalPosterDescTrans}
-          posterUrl={womanWithHat}
+          title={'Vitamin B serums'}
+          description={'description'}
+          posterUrl={p008}
         />
 
         <div className={s.smallerPosters}>
           <SmallPoster
-            title={smallPoster1TitleTrans}
-            description={smallPoster1DescTrans}
-            posterUrl={speakers}
+            title={'hyperpigmentation'}
+            description={'description'}
+            posterUrl={p002}
           />
 
           <SmallPoster
-            title={smallPoster2TitleTrans}
-            description={smallPoster2DescTrans}
-            posterUrl={perfumeGucci}
+            title={'Dry Skin Products'}
+            description={'description'}
+            posterUrl={p006}
           />
         </div>
       </div>

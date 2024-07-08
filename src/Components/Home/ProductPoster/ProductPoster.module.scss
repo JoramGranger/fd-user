@@ -28,7 +28,7 @@
 
 .content>span {
   font-weight: 600;
-  color: #00FF66;
+  color: var(--pink-two);
 }
 
 .content>h2 {
@@ -60,8 +60,8 @@
 .content>a {
   padding: 16px 48px;
   border-radius: 4px;
-  background-color: var(--green);
-  color: var(--white);
+  background-color: var(--pink-two);
+  color: var(--black);
   cursor: pointer;
   outline: none;
   border: none;
@@ -70,13 +70,13 @@
   transition: background-color .2s;
 
   &:hover {
-    background: #00c04d;
+    background: var(--pink-three);
   }
 
   &:focus-visible {
     background: transparent;
-    outline-color: #00c04d;
-    color: #00FF66;
+    outline-color: var(--pink-three);
+    color: var(--pink-three);
   }
 }
 
