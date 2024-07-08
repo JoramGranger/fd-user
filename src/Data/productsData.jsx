@@ -140,7 +140,7 @@ export const productsData = [
     rate: 5,
     votes: 88,
     quantity: 1,
-    sold: 105,
+    sold: 1050,
     id: uuid(),
   },
   {
@@ -338,7 +338,7 @@ export const productsData = [
     rate: 5,
     votes: 88,
     quantity: 1,
-    sold: 105,
+    sold: 1050,
     id: uuid(),
   },
   {
@@ -536,7 +536,7 @@ export const productsData = [
     rate: 5,
     votes: 88,
     quantity: 1,
-    sold: 105,
+    sold: 1050,
     id: uuid(),
   },
   {
@@ -569,7 +569,7 @@ export const productsData = [
     rate: 5,
     votes: 88,
     quantity: 1,
-    sold: 105,
+    sold: 1200,
     id: uuid(),
   },
   {
@@ -602,7 +602,7 @@ export const productsData = [
     rate: 5,
     votes: 88,
     quantity: 1,
-    sold: 105,
+    sold: 1000,
     id: uuid(),
   },
 ];
