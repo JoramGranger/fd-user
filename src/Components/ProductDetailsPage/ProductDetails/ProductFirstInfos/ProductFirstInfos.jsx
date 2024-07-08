@@ -4,7 +4,7 @@ import RateStars from "../../../Shared/MidComponents/RateStars/RateStars";
 import s from "./ProductFirstInfos.module.scss";
 
 const ProductFirstInfos = ({ productData }) => {
-  const { shortName, price, votes, rate } = productData;
+  const { shortName, price, votes, rate, description } = productData;
   const { t } = useTranslation();
 
   const translatedProductName = translateProduct({
@@ -22,7 +22,7 @@ const ProductFirstInfos = ({ productData }) => {
 
   return (
     <section className={s.firstInfos}>
-      <h2 className={s.productName}>{translatedProductName}</h2>
+      <h2 className={s.productName}>{shortName}</h2>
 
       <div className={s.rateAndReviews}>
         <RateStars rate={rate} />
@@ -33,11 +33,11 @@ const ProductFirstInfos = ({ productData }) => {
         <span className={s.greenText}>{t("detailsPage.inStock")}</span>
       </div>
 
-      <span className={s.price} aria-label={`Price: $${price}`}>
+      <span className={s.price} aria-label={`Price: UGX${price}`}>
         ${price}
       </span>
 
-      <p className={s.description}>{translatedDescription}</p>
+      <p className={s.description}>{description}</p>
     </section>
   );
 };

@@ -103,6 +103,7 @@ export const productsData = [
         color: "#27292d",
       },
     ],
+    sizes: ["100 ML", "150 ML", "500 ML", "1 Ltr"],
     rate: 5,
     votes: 88,
     quantity: 1,

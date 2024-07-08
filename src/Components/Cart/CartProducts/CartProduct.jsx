@@ -24,7 +24,7 @@ const CartProduct = ({ data }) => {
           <RemoveCartProductBtn productId={id} />
         </div>
 
-        <Link to={`/details?product=${name}`}>{translatedProductName}</Link>
+        <Link to={`/details?product=${name}`}>{shortName}</Link>
       </td>
 
       <td className={s.price}>${afterDiscount}</td>

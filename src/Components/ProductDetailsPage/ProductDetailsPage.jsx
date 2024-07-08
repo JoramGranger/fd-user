@@ -23,13 +23,13 @@ const ProductDetailsPage = () => {
   const productNameTrans = t(`products.${productName}.name`);
   const history = [
     t("history.account"),
-    productCategoryTrans,
-    productNameTrans,
+    productCategory,
+    productName,
   ];
   const historyPaths = [
     {
       index: 0,
-      path: "/profile",
+      path: "/products",
     },
     {
       index: 1,
