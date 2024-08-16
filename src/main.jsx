@@ -8,6 +8,8 @@ import { store } from "./App/store.jsx";
 import "./Styles/main.scss";
 import "./i18n.js";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
