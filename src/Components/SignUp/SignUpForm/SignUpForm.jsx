@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { showAlert } from "src/Features/globalSlice";
-import { newSignUp, setLoginData } from "src/Features/userSlice";
+import { login } from "src/Features/auth/authSlice";
 import { simpleValidationCheck } from "src/Functions/componentsFunctions";
 import {
   compareDataToObjValue,
@@ -15,7 +15,7 @@ import SignUpFormInputs from "./SignUpFormInputs/SignUpFormInputs";
 const SignUpForm = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const { signedUpUsers } = useSelector((state) => state.user);
+  const users = useSelector((state) => state.users?.users || []); // Handle undefined state
   const isWebsiteOnline = useOnlineStatus();
 
   function signUp(e) {
@@ -32,14 +32,14 @@ const SignUpForm = () => {
 
     if (isFormValid) {
       const isUserAlreadySignedUp = compareDataToObjValue(
-        signedUpUsers,
+        users,
         formData,
         "emailOrPhone"
       );
       if (isUserAlreadySignedUp) return;
 
       const uniqueSignedUpUsers = getUniqueArrayByObjectKey({
-        arr: signedUpUsers,
+        arr: users,
         newArr: [formData],
         key: "emailOrPhone",
       });
@@ -49,8 +49,8 @@ const SignUpForm = () => {
         return;
       }
 
-      dispatch(newSignUp(uniqueSignedUpUsers));
-      dispatch(setLoginData(formData));
+      // Dispatch login action with the necessary payload
+      dispatch(login({ email: formData.emailOrPhone, password: formData.password }));
       signInAlert(t, dispatch);
     }
   }

@@ -6,7 +6,7 @@ import s from "./Nav.module.scss";
 
 const Nav = () => {
   const { t } = useTranslation();
-  const { loginInfo } = useSelector((state) => state.user);
+  const { isAuthenticated } = useSelector((state) => state.auth); // Updated to use auth state
   const navDirection = i18next.dir() === "ltr" ? "ltr" : "rtl";
 
   return (
@@ -29,18 +29,23 @@ const Nav = () => {
         </li>
 
         <li>
-          {loginInfo.isSignIn ? (
+          {isAuthenticated ? ( // Updated to use isAuthenticated from auth state
             <NavLink to="/profile">{t("nav.profile")}</NavLink>
           ) : (
             <>
-            <NavLink to="/signup">{t("nav.signUp")}</NavLink>
-            <NavLink to="/login" style={{
-              marginLeft: '10px',
-              backgroundColor: '#040404',
-              color: '#FDE2F3',
-              padding: '15px',
-              borderRadius: '5px'
-            }}>{t("nav.login")}</NavLink>
+              <NavLink to="/signup">{t("nav.signUp")}</NavLink>
+              <NavLink
+                to="/login"
+                style={{
+                  marginLeft: '10px',
+                  backgroundColor: '#040404',
+                  color: '#FDE2F3',
+                  padding: '15px',
+                  borderRadius: '5px'
+                }}
+              >
+                {t("nav.login")}
+              </NavLink>
             </>
           )}
         </li>

@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { showAlert } from "src/Features/globalSlice";
-import { updateUserData } from "src/Features/userSlice";
+import { updateUserData } from "src/Features/users/userSlice";
 import {
   checkAreInputsValid,
   checkEmailValidation,

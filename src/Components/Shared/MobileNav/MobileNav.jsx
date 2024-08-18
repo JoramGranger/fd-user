@@ -10,8 +10,8 @@ import s from "./MobileNav.module.scss";
 
 const MobileNav = () => {
   const { isMobileMenuActive } = useSelector((state) => state.global);
-  const { loginInfo } = useSelector((state) => state.user);
-  const { username, isSignIn } = loginInfo;
+  const { user, isAuthenticated } = useSelector((state) => state.auth);
+  const { username } = user || {}; // Safely handle potential null user
   const handleSignOut = useSignOut();
   const { t } = useTranslation();
 
@@ -20,7 +20,7 @@ const MobileNav = () => {
       <div className={s.userInfo}>
         <Link to="/profile" title={t("mobileNav.profile")} className={s.img}>
           <img
-            src={isSignIn ? userImg : userPicturePlaceholder}
+            src={isAuthenticated ? userImg : userPicturePlaceholder}
             alt="user's picture"
             loading="lazy"
             decoding="async"
@@ -34,7 +34,7 @@ const MobileNav = () => {
             title={t("mobileNav.profile")}
             className={s.userName}
           >
-            {username}
+            {username || 'Guest'} {/* Fallback to 'Guest' */}
           </Link>
         </p>
       </div>
@@ -42,7 +42,7 @@ const MobileNav = () => {
       <nav className={s.navLinks}>
         <ul>
           {mobileNavData.map(({ name, link, icon, requiteSignIn }, index) => {
-            const shouldShow = requiteSignIn ? isSignIn : true;
+            const shouldShow = requiteSignIn ? isAuthenticated : true;
             const currentPage =
               window.location.pathname === link ? "page" : undefined;
 
@@ -62,7 +62,7 @@ const MobileNav = () => {
 
       <hr className={s.line}></hr>
 
-      {isSignIn && (
+      {isAuthenticated && (
         <button
           className={s.signOutButton}
           type="button"
@@ -73,7 +73,7 @@ const MobileNav = () => {
         </button>
       )}
 
-      {!isSignIn && (
+      {!isAuthenticated && (
         <Link to="/signup" className={s.signOutButton}>
           <SvgIcon name="boxArrowRight" />
           <span>{t("mobileNav.signIn")}</span>

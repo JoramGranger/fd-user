@@ -1,12 +1,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL + 'users/login';
+
 // login slice
 export const login = createAsyncThunk(
   'auth/login',
   async ({ email, password }, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/users/login', { email, password });
+      const response = await axios.post(API_URL, { email, password });
       localStorage.setItem('token', response.data.token);
       return response.data;
     } catch (error) {
@@ -15,38 +17,21 @@ export const login = createAsyncThunk(
   }
 );
 
-// change password slice
-export const changePassword = createAsyncThunk(
-  'auth/changePassword',
-  async ({ currentPassword, newPassword }, { rejectWithValue }) => {
-      try {
-          const response = await axios.post('/api/auth/change-password', {
-              currentPassword,
-              newPassword,
-          });
-          return response.data;
-      } catch (error) {
-          return rejectWithValue(error.response.data);
-      }
-  }
-);
+// other slice code...
 
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    user: JSON.parse(localStorage.getItem('user')) || null,
+    user: JSON.parse(localStorage.getItem('user')) || {},
     loading: false,
     error: null,
     isAuthenticated: !!localStorage.getItem('token'),
-    username: '',
-    password: '',
-    email: '',
+    token: localStorage.getItem('token') || null,
     validationErrors: {},
-    token: localStorage.getItem('token') || null, // Initialize token from local storage
   },
   reducers: {
     logout: (state) => {
-      state.user = null;
+      state.user = {};
       state.isAuthenticated = false;
       state.token = null;
       localStorage.removeItem('token');
@@ -66,11 +51,10 @@ const authSlice = createSlice({
     },
     clearValidationErrors: (state) => {
       state.validationErrors = {};
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
-    /* login */
       .addCase(login.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -91,20 +75,8 @@ const authSlice = createSlice({
         } else {
           state.error = action.error.message;
         }
-      })
-        /* changepassword */
-        // other extra reducers
-        .addCase(changePassword.pending, (state) => {
-          state.loading = true;
-          state.error = null;
-      })
-      .addCase(changePassword.fulfilled, (state) => {
-          state.loading = false;
-      })
-      .addCase(changePassword.rejected, (state, action) => {
-          state.loading = false;
-          state.error = action.payload;
       });
+    // other extraReducers...
   },
 });
 

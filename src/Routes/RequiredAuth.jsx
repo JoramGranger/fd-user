@@ -5,8 +5,7 @@ import { pagesRequireSignIn } from "../Data/globalVariables";
 import { showAlert } from "../Features/globalSlice";
 
 const RequiredAuth = ({ children }) => {
-  const { loginInfo } = useSelector((state) => state.user);
-  const { isSignIn } = loginInfo;
+  const { isAuthenticated } = useSelector((state) => state.auth);
   const location = useLocation();
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -14,9 +13,9 @@ const RequiredAuth = ({ children }) => {
   const isLoginOrSignUpPage = pathName === "/login" || pathName === "/signup";
 
   const isPageRequiringSignIn = (page) =>
-    pagesRequireSignIn.includes(page) && !isSignIn;
+    pagesRequireSignIn.includes(page) && !isAuthenticated;
 
-  if (isLoginOrSignUpPage && isSignIn) return <Navigate to="/" />;
+  if (isLoginOrSignUpPage && isAuthenticated) return <Navigate to="/" />;
   if (isPageRequiringSignIn(pathName)) {
     loginFirstAlert();
     return <Navigate to="/signup" />;

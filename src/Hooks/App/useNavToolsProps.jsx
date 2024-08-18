@@ -4,11 +4,10 @@ import { useLocation } from "react-router-dom";
 
 const useNavToolsProps = () => {
   const [navToolsProps, setNavToolsProps] = useState({});
-  const {
-    loginInfo: { isSignIn },
-  } = useSelector((state) => state.user);
+  const { isAuthenticated } = useSelector((state) => state.auth); // Pull from auth slice
   const location = useLocation();
   const path = location.pathname;
+
   const navProps = {
     signIn: {
       showHeart: true,
@@ -25,16 +24,21 @@ const useNavToolsProps = () => {
       showCart: false,
       showUser: false,
     },
+    default: {
+      showHeart: false,
+      showCart: false,
+      showUser: false,
+    },
   };
 
   const setSelectedNavProps = () => {
     let selectedNavProps = navProps.default;
 
-    if (!isSignIn) {
+    if (!isAuthenticated) {
       selectedNavProps = navProps.notSignIn;
     } else if (path === "/signup" || path === "/login") {
       selectedNavProps = navProps.signUpPage;
-    } else if (isSignIn) {
+    } else if (isAuthenticated) {
       selectedNavProps = navProps.signIn;
     }
 
@@ -43,7 +47,7 @@ const useNavToolsProps = () => {
 
   useEffect(() => {
     setSelectedNavProps();
-  }, [isSignIn, path]);
+  }, [isAuthenticated, path]);
 
   return navToolsProps;
 };

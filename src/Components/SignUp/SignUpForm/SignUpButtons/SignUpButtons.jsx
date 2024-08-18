@@ -3,9 +3,9 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { googleIcon } from "src/Assets/Images/Images";
 import { DEFAULT_LOGIN_DATA } from "../../../../Data/globalVariables";
-import { setLoginData } from "../../../../Features/userSlice";
 import { openSignWithGooglePopUp } from "../../SignUpWithGoogle/SignUpWithGooglePopup";
 import { signInAlert } from "../SignUpForm";
+import { login } from "../../../../Features/auth/authSlice"; // Import the login action
 import s from "./SignUpButtons.module.scss";
 
 const SignUpButtons = () => {
@@ -28,7 +28,10 @@ const SignUpButtons = () => {
       navigateTo("/");
       isSignUpWithGooglePressed = false;
 
-      setTimeout(() => dispatch(setLoginData(DEFAULT_LOGIN_DATA)), 500);
+      // Dispatch login action with default data
+      dispatch(login({ email: DEFAULT_LOGIN_DATA.email, password: DEFAULT_LOGIN_DATA.password })).then(() => {
+        setTimeout(() => dispatch(setLoginData(DEFAULT_LOGIN_DATA)), 500);
+      });
     }, 2500);
   }
 
@@ -54,4 +57,5 @@ const SignUpButtons = () => {
     </div>
   );
 };
+
 export default SignUpButtons;

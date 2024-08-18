@@ -1,9 +1,7 @@
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { showAlert } from "src/Features/globalSlice";
-import { newSignUp } from "src/Features/userSlice";
-import { simpleValidationCheck } from "src/Functions/componentsFunctions";
+import { login, setValidationErrors } from "src/Features/auth/authSlice";  // Updated import for login action
 import useOnlineStatus from "src/Hooks/Helper/useOnlineStatus";
 import ShowHidePassword from "../../Shared/MiniComponents/ShowHidePassword/ShowHidePassword";
 import s from "./LogInForm.module.scss";
@@ -11,13 +9,12 @@ import s from "./LogInForm.module.scss";
 const LogInForm = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { signedUpUsers } = useSelector((state) => state.user);
-  const emailOrPhone = useRef();
-  const password = useRef();
   const isWebsiteOnline = useOnlineStatus();
 
-  function login(e) {
-    const inputs = e.target.querySelectorAll("input");
+  const emailOrPhone = useRef();
+  const password = useRef();
+
+  function handleLogin(e) {
     e.preventDefault();
 
     if (!isWebsiteOnline) {
@@ -25,27 +22,20 @@ const LogInForm = () => {
       return;
     }
 
-    const isFormValid = simpleValidationCheck(inputs);
-    if (!isFormValid) return;
+    const email = emailOrPhone.current.value;
+    const passwordValue = password.current.value;
 
-    const dataByEmail = filterLoginByEmailOrPhone(signedUpUsers, emailOrPhone);
-    const isCorrectLoginData = checkLoginPassword(dataByEmail, password);
-
-    const formDataObj = new FormData(e.target);
-    const formData = {};
-
-    // Set keys and values from formDataObj to formData
-    for (let pair of formDataObj.entries()) formData[pair[0]] = pair[1];
-
-    if (isCorrectLoginData) {
-      dispatch(newSignUp(signedUpUsers));
-      logInAlert(dispatch, t);
+    if (!email || !passwordValue) {
+      dispatch(setValidationErrors({ email: !email, password: !passwordValue }));
+      return;
     }
+
+    // Dispatch login action
+    dispatch(login({ email, password: passwordValue }));
   }
 
   return (
-    <form className={s.form} onSubmit={login}>
-      <h2></h2>
+    <form className={s.form} onSubmit={handleLogin}>
       <h2>{t("loginSignUpPage.login")}</h2>
       <p>{t("loginSignUpPage.enterDetails")}</p>
 
@@ -54,7 +44,7 @@ const LogInForm = () => {
           type="text"
           name="emailOrPhone"
           placeholder={t("inputsPlaceholders.emailOrPhone")}
-          onChange={(e) => (emailOrPhone.current = e.target.value)}
+          ref={emailOrPhone}
           aria-required="false"
         />
 
@@ -63,7 +53,7 @@ const LogInForm = () => {
             type="password"
             name="Password"
             placeholder={t("inputsPlaceholders.password")}
-            onChange={(e) => (password.current = e.target.value)}
+            ref={password}
             aria-required="false"
           />
           <ShowHidePassword />
@@ -79,26 +69,8 @@ const LogInForm = () => {
     </form>
   );
 };
+
 export default LogInForm;
-
-function checkLoginPassword(filteredUsersData, passwordRef) {
-  const isPasswordValid =
-    filteredUsersData[0]?.password === passwordRef.current;
-  return isPasswordValid;
-}
-
-function filterLoginByEmailOrPhone(signedUpUsers, emailOrPhoneRef) {
-  return signedUpUsers?.filter(
-    (user) => user.emailOrPhone === emailOrPhoneRef.current
-  );
-}
-
-function logInAlert(dispatch, t) {
-  const alertText = t("toastAlert.loginSuccess");
-  const alertState = "success";
-
-  setTimeout(() => dispatch(showAlert({ alertText, alertState })), 1500);
-}
 
 function internetConnectionAlert(dispatch, t) {
   const alertText = t("toastAlert.loginFailed");
