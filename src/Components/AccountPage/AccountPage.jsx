@@ -8,7 +8,8 @@ import s from "./AccountPage.module.scss";
 import EditProfileForm from "./EditProfileForm/EditProfileForm";
 
 const AccountPage = () => {
-  const { loginInfo } = useSelector((state) => state.user);
+  // Use the 'auth' slice to get the user information
+  const { user } = useSelector((state) => state.auth); // Access user from auth slice
   const { t } = useTranslation();
 
   return (
@@ -29,7 +30,7 @@ const AccountPage = () => {
             <p className={s.welcomeMessage}>
               {t("common.welcome")}
               {"! "}
-              <Link to="/profile">{loginInfo.username}</Link>
+              <Link to="/profile">{user.username || "User"}</Link> {/* Provide fallback text */}
             </p>
           </div>
 
@@ -42,4 +43,5 @@ const AccountPage = () => {
     </>
   );
 };
+
 export default AccountPage;

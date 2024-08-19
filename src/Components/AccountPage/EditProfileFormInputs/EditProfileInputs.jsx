@@ -1,19 +1,38 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { updateUserData } from "src/Features/users/userSlice"; // Import updateUserData action
 import EditProfileInput from "./EditProfileInput";
 import s from "./EditProfileInputs.module.scss";
 
 const EditProfileInputs = () => {
-  const { loginInfo } = useSelector((state) => state.user);
-  const { username, emailOrPhone, address } = loginInfo;
-  const firstLastUserName = username.split(" ");
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth); // Access user from auth slice
+  const { username, email, address } = user;
+  
+  const firstLastUserName = username ? username.split(" ") : ["", ""];
   const [firstName, setFirstName] = useState(firstLastUserName[0]);
   const [lastName, setLastName] = useState(firstLastUserName[1]);
-  const [emailOrPhoneState, setEmailOrPhoneState] = useState(emailOrPhone);
+  const [emailOrPhoneState, setEmailOrPhoneState] = useState(email || "");
   const [newPassword, setNewPassword] = useState("");
-  const [addressState, setAddress] = useState(address);
+  const [addressState, setAddress] = useState(address || "");
+
   const { t } = useTranslation();
+
+  const handleSave = () => {
+    const updatedUserData = {
+      username: `${firstName} ${lastName}`,
+      email: emailOrPhoneState,
+      address: addressState,
+      password: newPassword,
+    };
+
+    dispatch(updateUserData(updatedUserData));
+  };
+
+  useEffect(() => {
+    // Optionally, you could handle side effects or initialization here.
+  }, [user]);
 
   return (
     <section className={s.inputs}>
@@ -83,7 +102,12 @@ const EditProfileInputs = () => {
           }}
         />
       </section>
+
+      <button onClick={handleSave} className={s.saveButton}>
+        {t("buttons.save")}
+      </button>
     </section>
   );
 };
+
 export default EditProfileInputs;
