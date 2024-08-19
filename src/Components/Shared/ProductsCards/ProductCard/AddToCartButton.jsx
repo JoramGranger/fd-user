@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { showAlert } from "src/Features/globalSlice";
 import { addToArray, removeByKeyName } from "src/Features/productsSlice";
 import { isItemFound } from "src/Functions/helper";
@@ -9,12 +9,12 @@ import s from "./AddToCartButton.module.scss";
 
 const AddToCartButton = ({ product }) => {
   const { t } = useTranslation();
-  const { cartProducts } = useSelector((state) => state.products);
-  const { loginInfo } = useSelector((state) => state.user);
-  const isProductAlreadyExist = isItemFound(cartProducts, product, "shortName");
-  const iconName = isProductAlreadyExist ? "trashCan" : "cart3";
-  const [iconNameState, setIconName] = useState(iconName);
   const dispatch = useDispatch();
+  const { cartProducts } = useSelector((state) => state.products);
+  const { user } = useSelector((state) => state.auth); // Updated selector
+  const isProductAlreadyExist = isItemFound(cartProducts, product, "shortName");
+  const [iconNameState, setIconName] = useState(isProductAlreadyExist ? "trashCan" : "cart3");
+  
   const buttonText = t(
     `productCard.buttonText.${
       isProductAlreadyExist ? "removeFromCart" : "addToCart"
@@ -22,7 +22,7 @@ const AddToCartButton = ({ product }) => {
   );
 
   function handleCartButton() {
-    if (!loginInfo.isSignIn) {
+    if (!user.isAuthenticated) { // Updated check
       dispatch(
         showAlert({
           alertText: t("toastAlert.addToCart"),
@@ -36,19 +36,16 @@ const AddToCartButton = ({ product }) => {
   }
 
   function addToCart() {
-    const addAction = addToArray({ key: "cartProducts", value: product });
-    dispatch(addAction);
+    dispatch(addToArray({ key: "cartProducts", value: product }));
     setIconName("trashCan");
   }
 
   function removeFromCart() {
-    const removeAction = removeByKeyName({
+    dispatch(removeByKeyName({
       dataKey: "cartProducts",
       itemKey: "shortName",
       keyValue: product.shortName,
-    });
-
-    dispatch(removeAction);
+    }));
     setIconName("cart3");
   }
 
@@ -65,4 +62,5 @@ const AddToCartButton = ({ product }) => {
     </button>
   );
 };
+
 export default AddToCartButton;

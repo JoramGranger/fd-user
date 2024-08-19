@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { login, setValidationErrors } from "src/Features/auth/authSlice";  // Updated import for login action
+import { login, setValidationErrors } from "src/Features/auth/authSlice";
 import useOnlineStatus from "src/Hooks/Helper/useOnlineStatus";
 import ShowHidePassword from "../../Shared/MiniComponents/ShowHidePassword/ShowHidePassword";
 import s from "./LogInForm.module.scss";
@@ -10,6 +10,7 @@ const LogInForm = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const isWebsiteOnline = useOnlineStatus();
+  const { validationErrors, error } = useSelector((state) => state.auth);
 
   const emailOrPhone = useRef();
   const password = useRef();
@@ -30,13 +31,12 @@ const LogInForm = () => {
       return;
     }
 
-    // Dispatch login action
     dispatch(login({ email, password: passwordValue }));
   }
 
   return (
     <form className={s.form} onSubmit={handleLogin}>
-      <h2>{t("loginSignUpPage.login")}</h2>
+      <h2>Log in to Fortune Derma</h2>
       <p>{t("loginSignUpPage.enterDetails")}</p>
 
       <div className={s.inputs}>
@@ -46,7 +46,9 @@ const LogInForm = () => {
           placeholder={t("inputsPlaceholders.emailOrPhone")}
           ref={emailOrPhone}
           aria-required="false"
+          className={validationErrors.email ? s.error : ''}
         />
+        {validationErrors.email && <span>Email Required</span>}
 
         <div className={s.input}>
           <input
@@ -55,10 +57,14 @@ const LogInForm = () => {
             placeholder={t("inputsPlaceholders.password")}
             ref={password}
             aria-required="false"
+            className={validationErrors.password ? s.error : ''}
           />
+          {validationErrors.password && <span>Password Required</span>}
           <ShowHidePassword />
         </div>
       </div>
+
+      {error && <div className={s.serverError}><span>{error}</span></div>}
 
       <div className={s.buttons}>
         <button type="submit" className={s.loginBtn}>

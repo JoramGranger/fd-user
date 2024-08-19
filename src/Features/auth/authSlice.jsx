@@ -3,10 +3,11 @@ import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL + 'users/login';
 
-// login slice
 export const login = createAsyncThunk(
   'auth/login',
   async ({ email, password }, { rejectWithValue }) => {
+    console.log(API_URL)
+    console.log(email + ' ' + password)
     try {
       const response = await axios.post(API_URL, { email, password });
       localStorage.setItem('token', response.data.token);
@@ -16,8 +17,6 @@ export const login = createAsyncThunk(
     }
   }
 );
-
-// other slice code...
 
 const authSlice = createSlice({
   name: 'auth',
@@ -72,11 +71,11 @@ const authSlice = createSlice({
         state.loading = false;
         if (action.payload) {
           state.validationErrors = action.payload.errors || {};
+          state.error = action.payload.message || "Login Failed. Please check your credentials"
         } else {
           state.error = action.error.message;
         }
       });
-    // other extraReducers...
   },
 });
 

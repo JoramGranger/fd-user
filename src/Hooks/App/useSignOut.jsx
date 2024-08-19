@@ -18,7 +18,7 @@ const useSignOut = () => {
     const emptyArraysAction = setEmptyArrays({ keys: arraysToEmpty });
 
     dispatch(emptyArraysAction);
-    dispatch(signOut());
+    dispatch(logout());
 
     setTimeout(() => {
       dispatch(
