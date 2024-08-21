@@ -8,12 +8,13 @@ import s from "./EditProfileInputs.module.scss";
 const EditProfileInputs = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth); // Access user from auth slice
-  const { username, email, address } = user;
+  const { name, email, phone, address } = user;
   
-  const firstLastUserName = username ? username.split(" ") : ["", ""];
+  const firstLastUserName = name ? name.split(" ") : ["", ""];
   const [firstName, setFirstName] = useState(firstLastUserName[0]);
   const [lastName, setLastName] = useState(firstLastUserName[1]);
-  const [emailOrPhoneState, setEmailOrPhoneState] = useState(email || "");
+  const [emailState, setEmailState] = useState(email || "");
+  const [phoneState, setPhoneState] = useState(phone || "");
   const [newPassword, setNewPassword] = useState("");
   const [addressState, setAddress] = useState(address || "");
 
@@ -21,10 +22,11 @@ const EditProfileInputs = () => {
 
   const handleSave = () => {
     const updatedUserData = {
-      username: `${firstName} ${lastName}`,
-      email: emailOrPhoneState,
-      address: addressState,
-      password: newPassword,
+      name: `${firstName} ${lastName}`,
+      email: emailState,
+      phone: phoneState,
+      /* address: addressState, */
+      /* password: newPassword, */
     };
 
     dispatch(updateUserData(updatedUserData));
@@ -54,58 +56,37 @@ const EditProfileInputs = () => {
             setValue: setLastName,
           }}
         />
-
         <EditProfileInput
           inputData={{
             label: t("inputsLabels.email"),
             name: "changeEmail",
-            value: emailOrPhoneState,
-            setValue: setEmailOrPhoneState,
+            value: emailState,
+            setValue: setEmailState,
             placeholder: "example@gmail.com",
           }}
         />
-
+        <EditProfileInput
+          inputData={{
+            label: "Phone",
+            name: "changePhone",
+            value: phoneState,
+            setValue: setPhoneState,
+            placeholder: "0700 000 000",
+          }}
+        />
         <EditProfileInput
           inputData={{
             label: t("inputsLabels.address"),
             name: "address",
             value: addressState,
             setValue: setAddress,
-            placeholder: t("inputsPlaceholders.address"),
+            placeholder: "Bukoto Street, Plot 6",
           }}
         />
       </section>
-
-      <section className={s.passwordInputs}>
-        <EditProfileInput
-          inputData={{
-            type: "password",
-            label: t("inputsLabels.passwordChanges"),
-            name: "currentPass",
-            placeholder: t("inputsPlaceholders.currentPass"),
-          }}
-        />
-
-        <EditProfileInput
-          inputData={{
-            type: "password",
-            placeholder: t("inputsPlaceholders.newPass"),
-            value: newPassword,
-            setValue: setNewPassword,
-          }}
-        />
-
-        <EditProfileInput
-          inputData={{
-            type: "password",
-            placeholder: t("inputsPlaceholders.confirmPass"),
-          }}
-        />
-      </section>
-
-      <button onClick={handleSave} className={s.saveButton}>
+      {/* <button onClick={handleSave} className={s.saveButton}>
         {t("buttons.save")}
-      </button>
+      </button> */}
     </section>
   );
 };

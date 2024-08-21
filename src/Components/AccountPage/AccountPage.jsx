@@ -30,7 +30,7 @@ const AccountPage = () => {
             <p className={s.welcomeMessage}>
               {t("common.welcome")}
               {"! "}
-              <Link to="/profile">{user.username || "User"}</Link> {/* Provide fallback text */}
+              <Link to="/profile">{user.name || "User"}</Link> {/* Provide fallback text */}
             </p>
           </div>
 
